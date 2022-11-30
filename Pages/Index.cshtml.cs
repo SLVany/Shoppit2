@@ -26,7 +26,9 @@ namespace Shoppit.Pages
                 MySqlCommand cmd = new MySqlCommand();
                 c.Open();
                 cmd.Connection = c;
-                cmd.CommandText = $"SELECT * FROM users WHERE username='{u}' AND password='{p}'";
+
+                cmd.CommandText = $"SELECT * FROM users WHERE username='{u}' AND password='{p}' EXCEPT SELECT * FROM users WHERE username='' AND password=''";
+
                 using (MySqlDataReader reader = cmd.ExecuteReader())
                 {
                     if (reader.Read())

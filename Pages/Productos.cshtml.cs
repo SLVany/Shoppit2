@@ -19,6 +19,7 @@ namespace Shoppit.Pages
                 MySqlCommand cmd = new MySqlCommand();
                 c.Open();
                 cmd.Connection = c;
+
                 cmd.CommandText = "SELECT * FROM productos";
                 using (MySqlDataReader reader = cmd.ExecuteReader())
                 {
@@ -34,6 +35,11 @@ namespace Shoppit.Pages
                     }
                 }
             }
+        }
+
+        protected void editarRegistro_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Index");
         }
     }
 }
